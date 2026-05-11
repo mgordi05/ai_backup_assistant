@@ -1,0 +1,26 @@
+# dataset lines
+
+wc -l data/datasets/metrics_log_events.csv
+
+
+# last values
+
+tail -n 5 data/datasets/metrics_log_events.csv
+
+
+# collect metrics
+
+./src/log_collector/collect.py --interval 5 --iterations 10
+
+
+# train ML model
+
+./src/ml/train_iforest.py --contamination 0.05
+
+
+# launch decision engine
+
+./src/decision_engine/decide.py --threshold -0.611155
+
+
+
